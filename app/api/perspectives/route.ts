@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const maxDuration = 60; // seconds — reasoning model needs room
+
 const SYSTEM_PROMPT = `You are a neutral AI that generates ideologically diverse perspectives on news topics.
 For a given topic, generate exactly 5 perspectives representing different political ideologies.
 Return ONLY valid JSON, no markdown, no explanation.`;
@@ -85,7 +87,7 @@ async function fetchPerspectives(topic: string): Promise<PerspectivesResponse> {
       temperature: 0.7,
       response_format: { type: "json_object" },
     }),
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(55000),
   });
 
   if (!response.ok) {
