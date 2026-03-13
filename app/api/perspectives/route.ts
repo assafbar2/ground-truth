@@ -77,7 +77,7 @@ async function fetchPerspectives(topic: string): Promise<PerspectivesResponse> {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "grok-3",
+      model: "grok-4-1-fast-reasoning",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: USER_PROMPT(topic) },
